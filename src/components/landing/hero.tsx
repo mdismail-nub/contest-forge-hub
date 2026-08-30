@@ -1,7 +1,7 @@
-import { ArrowUpRight, Flame, Timer, TrendingDown, TrendingUp, Users } from "lucide-react";
+import { ArrowUpRight, Flame, Timer, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { avatarStack, contests, leaderboard } from "./data";
+import { avatarStack, COMMUNITY_FACEBOOK_URL, contests } from "./data";
 import { pad, useCountdown } from "./use-countdown";
 
 function CountdownCell({ value, label }: { value: string; label: string }) {
@@ -66,50 +66,6 @@ function CountdownWidget() {
   );
 }
 
-function LeaderboardPreview() {
-  return (
-    <div className="glass-panel float-slow rounded-2xl p-5 shadow-[var(--shadow-ambient)]">
-      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-        <h3 className="min-w-0 truncate text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-          Live leaderboard
-        </h3>
-        <span className="flex shrink-0 items-center gap-1.5 text-xs font-medium text-primary">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" /> live
-        </span>
-      </div>
-
-      <ul className="mt-3 space-y-1.5">
-        {leaderboard.map((row) => (
-          <li
-            key={row.handle}
-            className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-xl px-2 py-2 transition-colors hover:bg-accent/60"
-          >
-            <span className="w-5 shrink-0 font-mono text-xs text-muted-foreground">{row.rank}</span>
-            <span className="min-w-0 truncate font-mono text-sm">{row.handle}</span>
-            <span className="flex shrink-0 items-center gap-2">
-              <span className="font-mono text-sm font-semibold tabular-nums">{row.rating}</span>
-              <span
-                className={
-                  row.delta >= 0
-                    ? "flex items-center gap-0.5 text-xs font-medium text-primary"
-                    : "flex items-center gap-0.5 text-xs font-medium text-destructive"
-                }
-              >
-                {row.delta >= 0 ? (
-                  <TrendingUp className="h-3 w-3" />
-                ) : (
-                  <TrendingDown className="h-3 w-3" />
-                )}
-                {Math.abs(row.delta)}
-              </span>
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden px-4 pb-20 pt-14 sm:px-6 sm:pt-20">
@@ -134,8 +90,10 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button variant="electric" size="xl">
-              Join Community <ArrowUpRight className="h-4 w-4" />
+            <Button variant="electric" size="xl" asChild>
+              <a href={COMMUNITY_FACEBOOK_URL} target="_blank" rel="noreferrer">
+                Join Community <ArrowUpRight className="h-4 w-4" />
+              </a>
             </Button>
             <Button variant="glass" size="xl" asChild>
               <a href="#contests">Explore Contests</a>
@@ -158,7 +116,6 @@ export function Hero() {
 
         <div className="relative min-w-0 space-y-4">
           <CountdownWidget />
-          <LeaderboardPreview />
           <div className="glass-panel grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 rounded-2xl px-4 py-3">
             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary/12 text-primary">
               <Users className="h-4 w-4" />

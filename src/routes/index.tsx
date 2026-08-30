@@ -4,7 +4,6 @@ import { ContestsSection } from "@/components/landing/contests-section";
 import { CtaFooter } from "@/components/landing/cta-footer";
 import { FeatureGrid } from "@/components/landing/feature-grid";
 import { Hero } from "@/components/landing/hero";
-import { LeaderboardSection } from "@/components/landing/leaderboard-section";
 import { SiteHeader } from "@/components/landing/site-header";
 import { TrustBar } from "@/components/landing/trust-bar";
 
@@ -33,7 +32,6 @@ function Index() {
         <TrustBar />
         <FeatureGrid />
         <ContestsSection />
-        <LeaderboardSection />
       </main>
       <CtaFooter />
     </div>

@@ -111,7 +111,7 @@ export function ContestsSection() {
             </h2>
           </div>
           <Button variant="glass" className="shrink-0 rounded-xl" asChild>
-            <a href="#leaderboard">
+            <a href="#resources">
               View full calendar <ArrowRight className="h-4 w-4" />
             </a>
           </Button>
