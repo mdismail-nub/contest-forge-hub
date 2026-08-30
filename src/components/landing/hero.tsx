@@ -16,7 +16,7 @@ function CountdownCell({ value, label }: { value: string; label: string }) {
 }
 
 function CountdownWidget() {
-  const next = contests[0];
+  const next = contests[0]!;
   const { days, hours, minutes, seconds, ready } = useCountdown(next.startsInMs);
   const cells = ready
     ? [pad(days), pad(hours), pad(minutes), pad(seconds)]
@@ -38,7 +38,7 @@ function CountdownWidget() {
 
       <div className="mt-4 grid grid-cols-4 gap-2">
         {["Days", "Hours", "Min", "Sec"].map((label, index) => (
-          <CountdownCell key={label} value={cells[index]} label={label} />
+          <CountdownCell key={label} value={cells[index]!} label={label} />
         ))}
       </div>
 
