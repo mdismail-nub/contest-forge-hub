@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && node -e \"const fs=require('fs'); if(fs.existsSync('.output')){fs.mkdirSync('dist',{recursive:true}); fs.cpSync('.output/public','dist',{recursive:true,force:true}); fs.cpSync('.output','dist/.output',{recursive:true,force:true});}\"",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",

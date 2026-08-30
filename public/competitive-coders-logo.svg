@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 115" fill="none" role="img" aria-label="Competitive Coders">
+  <title>Competitive Coders</title>
+  <g fill="#0E0E0E" stroke="#0E0E0E">
+    <!-- 'c' -->
+    <path d="M 68 41 A 26 26 0 1 0 68 73" stroke-width="7" stroke-linecap="round" fill="none" />
+
+    <!-- 'o' -->
+    <circle cx="108" cy="57" r="26" stroke-width="7" fill="none" />
+
+    <!-- 'm' -->
+    <path d="M 150 83 L 150 32 M 150 44 C 153 35 162 31 172 31 C 183 31 189 38 189 48 L 189 83 M 189 44 C 192 35 201 31 211 31 C 222 31 228 38 228 48 L 228 83" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- 'p' -->
+    <path d="M 246 108 L 246 32 M 246 39 A 26 26 0 1 1 246 75" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- 'e' -->
+    <path d="M 292 57 L 342 57 A 25 25 0 0 0 293 52 A 25 25 0 0 0 338 73" stroke-width="7" stroke-linecap="round" fill="none" />
+
+    <!-- 't' -->
+    <path d="M 360 12 L 360 73 C 360 79 364 83 372 83 L 376 83 M 351 32 L 373 32" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- 'i' -->
+    <path d="M 393 32 L 393 83" stroke-width="7" stroke-linecap="round" fill="none" />
+    <circle cx="393" cy="16" r="4.5" fill="#0E0E0E" stroke="none" />
+
+    <!-- 't' -->
+    <path d="M 416 12 L 416 73 C 416 79 420 83 428 83 L 432 83 M 407 32 L 429 32" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- 'i' -->
+    <path d="M 449 32 L 449 83" stroke-width="7" stroke-linecap="round" fill="none" />
+    <circle cx="449" cy="16" r="4.5" fill="#0E0E0E" stroke="none" />
+
+    <!-- 'v' -->
+    <path d="M 467 32 L 484 82 L 501 32" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- 'e' -->
+    <path d="M 518 57 L 568 57 A 25 25 0 0 0 519 52 A 25 25 0 0 0 564 73" stroke-width="7" stroke-linecap="round" fill="none" />
+
+    <!-- 'c' -->
+    <path d="M 622 41 A 26 26 0 1 0 622 73" stroke-width="7" stroke-linecap="round" fill="none" />
+
+    <!-- Brand glyph '</>' in place of 'o' -->
+    <!-- '<' -->
+    <path d="M 653 42 L 640 57 L 653 72" stroke-width="6.8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <!-- '/' -->
+    <path d="M 669 36 L 660 78" stroke-width="6.8" stroke-linecap="round" fill="none" />
+    <!-- '>' -->
+    <path d="M 676 42 L 689 57 L 676 72" stroke-width="6.8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- 'd' -->
+    <path d="M 753 12 L 753 83 M 753 75 A 26 26 0 1 1 753 39" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- 'e' -->
+    <path d="M 770 57 L 820 57 A 25 25 0 0 0 771 52 A 25 25 0 0 0 816 73" stroke-width="7" stroke-linecap="round" fill="none" />
+
+    <!-- 'r' -->
+    <path d="M 837 83 L 837 32 M 837 48 C 841 38 850 31 862 32" stroke-width="7" stroke-linecap="round" fill="none" />
+
+    <!-- 's' -->
+    <path d="M 891 42.5 C 888 35.5 879 31 870 33 C 862 35 858 41 859 47 C 861 56 889 53 891 64 C 892 73 884 82 873 83 C 863 83 856 78 854 70" stroke-width="7" stroke-linecap="round" fill="none" />
+  </g>
+</svg>

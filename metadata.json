@@ -1,0 +1,6 @@
+{
+  "name": "Competitive Coders",
+  "description": "Weekly rated contests, curated problem ladders, and peer mentorship across Codeforces, LeetCode and CodeChef.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

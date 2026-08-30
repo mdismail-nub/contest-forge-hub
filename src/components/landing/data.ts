@@ -10,6 +10,7 @@ export type Contest = {
 };
 
 export const COMMUNITY_FACEBOOK_URL = "https://www.facebook.com/share/197aN9pJz4/";
+export const COMMUNITY_WHATSAPP_URL = "https://whatsapp.com/channel/0029VbDaODnFXUuk3Ssnck3K";
 
 const MINUTE = 60_000;
 const HOUR = 60 * MINUTE;
