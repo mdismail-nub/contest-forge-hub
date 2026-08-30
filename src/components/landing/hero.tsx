@@ -121,8 +121,8 @@ export function Hero() {
               <Users className="h-4 w-4" />
             </span>
             <p className="min-w-0 text-sm text-muted-foreground">
-              <span className="font-semibold text-foreground">213 coders</span> joined a live editorial
-              room in the last hour.
+              <span className="font-semibold text-foreground">213 coders</span> joined a live
+              editorial room in the last hour.
             </p>
           </div>
         </div>

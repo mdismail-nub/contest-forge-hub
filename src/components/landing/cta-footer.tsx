@@ -64,9 +64,12 @@ export function CtaFooter() {
               alt="Competitive Coders logo"
               className="h-20 w-20 rounded-xl border border-border bg-white object-contain p-1"
             />
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight">Get connected with Competitive Coders</h2>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight">
+              Get connected with Competitive Coders
+            </h2>
             <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-              Join our official communities and stay updated with contests, editorials, and mentorship.
+              Join our official communities and stay updated with contests, editorials, and
+              mentorship.
             </p>
             <div className="mt-6">
               <Button variant="electric" size="xl" asChild>
@@ -94,7 +97,9 @@ export function CtaFooter() {
         </div>
         <div className="mt-10 grid gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:grid-cols-[minmax(0,1fr)_auto]">
           <p>© {new Date().getFullYear()} Competitive Coders. All rights reserved.</p>
-          <p className="font-mono">built for people who love {"{"}brackets{"}"}</p>
+          <p className="font-mono">
+            built for people who love {"{"}brackets{"}"}
+          </p>
         </div>
       </div>
     </footer>
