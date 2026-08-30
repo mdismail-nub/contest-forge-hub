@@ -1,10 +1,10 @@
 import { platforms } from "./data";
 
-function PlatformBadge({ name, detail }: { name: string; detail: string }) {
+function PlatformBadge({ name, detail, logo }: { name: string; detail: string; logo: string }) {
   return (
     <div className="glass-panel flex shrink-0 items-center gap-3 rounded-2xl px-5 py-3">
-      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-primary/12 font-mono text-sm font-semibold text-primary">
-        {name.slice(0, 1)}
+      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-card">
+        <img src={logo} alt={`${name} logo`} className="h-5 w-5" loading="lazy" />
       </span>
       <span className="min-w-0">
         <span className="block truncate text-sm font-semibold">{name}</span>

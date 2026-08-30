@@ -9,6 +9,8 @@ export type Contest = {
   tags: string[];
 };
 
+export const COMMUNITY_FACEBOOK_URL = "https://www.facebook.com/share/197aN9pJz4/";
+
 const MINUTE = 60_000;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
@@ -46,21 +48,37 @@ export const contests: Contest[] = [
   },
 ];
 
-export const leaderboard = [
-  { rank: 1, handle: "n0va_sort", rating: 2841, delta: 62, country: "IN" },
-  { rank: 2, handle: "segment_tri", rating: 2790, delta: 41, country: "PL" },
-  { rank: 3, handle: "bitmask_ai", rating: 2718, delta: -18, country: "BD" },
-  { rank: 4, handle: "dijkstra_jr", rating: 2664, delta: 27, country: "BR" },
-  { rank: 5, handle: "modulo_998", rating: 2610, delta: 12, country: "JP" },
-];
-
 export const platforms = [
-  { name: "Codeforces", detail: "Rated mirrors" },
-  { name: "LeetCode", detail: "Daily ladders" },
-  { name: "CodeChef", detail: "Long challenges" },
-  { name: "GitHub", detail: "Open-source editorials" },
-  { name: "AtCoder", detail: "Beginner rounds" },
-  { name: "HackerRank", detail: "Interview prep" },
+  {
+    name: "Codeforces",
+    detail: "Rated mirrors",
+    logo: "https://cdn.simpleicons.org/codeforces",
+  },
+  {
+    name: "LeetCode",
+    detail: "Daily ladders",
+    logo: "https://cdn.simpleicons.org/leetcode",
+  },
+  {
+    name: "CodeChef",
+    detail: "Long challenges",
+    logo: "https://cdn.simpleicons.org/codechef",
+  },
+  {
+    name: "GitHub",
+    detail: "Open-source editorials",
+    logo: "https://cdn.simpleicons.org/github",
+  },
+  {
+    name: "AtCoder",
+    detail: "Beginner rounds",
+    logo: "https://cdn.simpleicons.org/atcoder",
+  },
+  {
+    name: "HackerRank",
+    detail: "Interview prep",
+    logo: "https://cdn.simpleicons.org/hackerrank",
+  },
 ];
 
 export const avatarStack = ["AK", "MR", "JS", "LI", "TQ", "DV"];

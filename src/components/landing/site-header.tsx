@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Braces, Menu, Moon, Sun, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { COMMUNITY_FACEBOOK_URL } from "@/components/landing/data";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "Community", href: "#community" },
   { label: "Contests", href: "#contests" },
   { label: "Resources", href: "#resources" },
-  { label: "Leaderboard", href: "#leaderboard" },
 ];
 
 function useTheme() {
@@ -60,8 +60,10 @@ export function SiteHeader() {
             >
               {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
-            <Button variant="electric" className="hidden rounded-xl sm:inline-flex">
-              Join Community
+            <Button variant="electric" className="hidden rounded-xl sm:inline-flex" asChild>
+              <a href={COMMUNITY_FACEBOOK_URL} target="_blank" rel="noreferrer">
+                Join Community
+              </a>
             </Button>
             <Button
               variant="glass"
@@ -93,8 +95,10 @@ export function SiteHeader() {
                 {link.label}
               </a>
             ))}
-            <Button variant="electric" className="mt-2 rounded-xl sm:hidden">
-              Join Community
+            <Button variant="electric" className="mt-2 rounded-xl sm:hidden" asChild>
+              <a href={COMMUNITY_FACEBOOK_URL} target="_blank" rel="noreferrer">
+                Join Community
+              </a>
             </Button>
           </nav>
         </div>
