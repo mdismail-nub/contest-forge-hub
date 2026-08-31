@@ -83,3 +83,56 @@ export const platforms = [
 ];
 
 export const avatarStack = ["AK", "MR", "JS", "LI", "TQ", "DV"];
+
+export type Resource = {
+  title: string;
+  description: string;
+  category: "Ladder" | "Editorial" | "Template" | "Course";
+  level: "Beginner" | "Intermediate" | "Advanced";
+  href: string;
+};
+
+export const resources: Resource[] = [
+  {
+    title: "Graph Theory Ladder",
+    description: "60 curated problems from BFS/DFS basics to flows and matchings.",
+    category: "Ladder",
+    level: "Intermediate",
+    href: "https://codeforces.com/problemset",
+  },
+  {
+    title: "Dynamic Programming Playbook",
+    description: "Pattern-by-pattern DP breakdown with recurrences and code templates.",
+    category: "Course",
+    level: "Intermediate",
+    href: "https://youtube.com/@competitivecoders",
+  },
+  {
+    title: "C++ Contest Template",
+    description: "Battle-tested competitive template: fast IO, debug macros, common structs.",
+    category: "Template",
+    level: "Beginner",
+    href: "https://github.com/",
+  },
+  {
+    title: "Number Theory Essentials",
+    description: "Modular arithmetic, sieves, CRT and combinatorics for rated rounds.",
+    category: "Course",
+    level: "Advanced",
+    href: "https://youtube.com/@competitivecoders",
+  },
+  {
+    title: "Weekly Contest Editorials",
+    description: "Video walkthroughs for every Competitive Coders weekly sprint.",
+    category: "Editorial",
+    level: "Intermediate",
+    href: "https://youtube.com/@competitivecoders",
+  },
+  {
+    title: "Beginner Array Ladder",
+    description: "Start here: prefix sums, two pointers, sliding window and hashing.",
+    category: "Ladder",
+    level: "Beginner",
+    href: "https://leetcode.com/problemset/",
+  },
+];

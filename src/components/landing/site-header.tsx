@@ -7,9 +7,10 @@ import { CompetitiveCodersLogo } from "@/components/landing/logo";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "Contests", href: "#contests" },
-  { label: "Features", href: "#features" },
-  { label: "Community", href: "#community" },
+  { label: "Home", href: "/" },
+  { label: "Contests", href: "/contests" },
+  { label: "Resources", href: "/resources" },
+  { label: "Community", href: "/#community" },
 ];
 
 function useTheme() {
@@ -31,9 +32,9 @@ export function SiteHeader() {
       <div className="glass-panel border-x-0 border-t-0 backdrop-blur-md">
         <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:grid-cols-[auto_1fr_auto]">
           <a
-            href="#"
+            href="/"
             className="flex min-w-0 items-center group transition-transform active:scale-98"
-            aria-label="competitive coders home"
+            aria-label="Competitive Coders home"
           >
             <CompetitiveCodersLogo size="md" />
           </a>

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { ArrowRight, ArrowUpRight, Check, Code2, Facebook, Send, Youtube } from "lucide-react";
+import { ArrowUpRight, Code2, Facebook, Send, Youtube } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { COMMUNITY_FACEBOOK_URL } from "./data";
 import { CompetitiveCodersLogo } from "./logo";
+import { NewsletterForm } from "./newsletter-form";
 
 const membersOnOrbit = [
   {
@@ -61,19 +61,6 @@ const socialLinks = [
 ];
 
 export function CtaFooter() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setSubscribed(true);
-    setTimeout(() => {
-      setEmail("");
-      setSubscribed(false);
-    }, 3500);
-  };
-
   return (
     <footer
       id="community"
@@ -206,35 +193,7 @@ export function CtaFooter() {
               Receive contest updates, problem solutions, and early access to rounds.
             </p>
 
-            <form onSubmit={handleSubscribe} className="relative mt-3">
-              <div className="flex items-center rounded-full border border-border/80 bg-background px-3 py-1.5 shadow-xs transition-focus-within focus-within:border-foreground/40">
-                <span className="pl-1 text-xs text-muted-foreground font-mono">@</span>
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email..."
-                  className="w-full bg-transparent px-2.5 text-xs text-foreground placeholder:text-muted-foreground/70 focus:outline-hidden"
-                />
-                <button
-                  type="submit"
-                  aria-label="Subscribe to newsletter"
-                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-foreground text-background transition-transform hover:scale-105 active:scale-95 disabled:opacity-50"
-                >
-                  {subscribed ? (
-                    <Check className="h-4 w-4 text-emerald-400" />
-                  ) : (
-                    <ArrowRight className="h-4 w-4" />
-                  )}
-                </button>
-              </div>
-              {subscribed && (
-                <p className="mt-1.5 pl-3 text-[0.7rem] font-medium text-emerald-500">
-                  Subscribed! We'll keep you posted.
-                </p>
-              )}
-            </form>
+            <NewsletterForm source="footer" />
           </div>
         </div>
 
