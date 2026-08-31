@@ -1,34 +1,36 @@
 import React from "react";
 
-import ccLogo from "@/assets/cc-logo.png.asset.json";
 import { cn } from "@/lib/utils";
 
 export interface LogoProps {
   className?: string;
   size?: "sm" | "md" | "lg" | "xl";
-  alt?: string;
 }
 
 const sizeClasses = {
-  sm: "h-5 sm:h-6",
-  md: "h-7 sm:h-8 md:h-9",
-  lg: "h-9 sm:h-11 md:h-12",
-  xl: "h-12 sm:h-14 md:h-16",
+  sm: "text-lg sm:text-xl",
+  md: "text-xl sm:text-2xl md:text-[1.65rem]",
+  lg: "text-2xl sm:text-3xl md:text-[2rem]",
+  xl: "text-3xl sm:text-4xl md:text-[2.5rem]",
 };
 
 /**
- * Official Competitive Coders wordmark. The uploaded brand asset is used
- * as-is — never recreated, recolored, or replaced with text.
+ * Competitive Coders text wordmark.
+ * Rendered as real HTML text so it stays responsive, selectable, and
+ * theme-aware. "Competitive" uses the brand navy; "Coders" uses electric blue.
  */
-export function CompetitiveCodersLogo({ className, size = "md", alt = "Competitive Coders" }: LogoProps) {
+export function CompetitiveCodersLogo({ className, size = "md" }: LogoProps) {
   return (
-    <img
-      src={ccLogo.url}
-      alt={alt}
-      width={1920}
-      height={628}
-      decoding="async"
-      className={cn("w-auto max-w-full select-none object-contain", sizeClasses[size], className)}
-    />
+    <span
+      className={cn(
+        "inline-flex items-baseline whitespace-nowrap font-display font-bold leading-none tracking-tight",
+        sizeClasses[size],
+        className,
+      )}
+      aria-label="Competitive Coders"
+    >
+      <span className="text-[var(--navy)] dark:text-[var(--foreground)]">Competitive</span>
+      <span className="ml-[0.25em] text-[var(--electric)]">Coders</span>
+    </span>
   );
 }
