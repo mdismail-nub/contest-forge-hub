@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { ArrowRight, ArrowUpRight, Check, Code2, Facebook, Send, Youtube } from "lucide-react";
+import { ArrowUpRight, Code2, Facebook, Send, Youtube } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { COMMUNITY_FACEBOOK_URL } from "./data";
 import { CompetitiveCodersLogo } from "./logo";
+import { NewsletterForm } from "./newsletter-form";
 
 const membersOnOrbit = [
   {
@@ -61,19 +61,6 @@ const socialLinks = [
 ];
 
 export function CtaFooter() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setSubscribed(true);
-    setTimeout(() => {
-      setEmail("");
-      setSubscribed(false);
-    }, 3500);
-  };
-
   return (
     <footer
       id="community"
