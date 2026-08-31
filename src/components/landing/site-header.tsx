@@ -7,9 +7,10 @@ import { CompetitiveCodersLogo } from "@/components/landing/logo";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "Contests", href: "#contests" },
-  { label: "Features", href: "#features" },
-  { label: "Community", href: "#community" },
+  { label: "Home", href: "/" },
+  { label: "Contests", href: "/contests" },
+  { label: "Resources", href: "/resources" },
+  { label: "Community", href: "/#community" },
 ];
 
 function useTheme() {
