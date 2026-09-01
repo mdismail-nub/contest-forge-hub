@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      contests: {
+        Row: {
+          banner_url: string | null
+          created_at: string
+          description: string | null
+          difficulty: string
+          ends_at: string | null
+          external_url: string | null
+          id: string
+          participants: number
+          platform: string
+          prize: string | null
+          starts_at: string
+          status: string
+          tags: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          banner_url?: string | null
+          created_at?: string
+          description?: string | null
+          difficulty?: string
+          ends_at?: string | null
+          external_url?: string | null
+          id?: string
+          participants?: number
+          platform?: string
+          prize?: string | null
+          starts_at?: string
+          status?: string
+          tags?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          banner_url?: string | null
+          created_at?: string
+          description?: string | null
+          difficulty?: string
+          ends_at?: string | null
+          external_url?: string | null
+          id?: string
+          participants?: number
+          platform?: string
+          prize?: string | null
+          starts_at?: string
+          status?: string
+          tags?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           created_at: string
@@ -35,15 +89,84 @@ export type Database = {
         }
         Relationships: []
       }
+      resources: {
+        Row: {
+          author: string | null
+          category: string
+          created_at: string
+          description: string
+          href: string
+          id: string
+          level: string
+          platform: string | null
+          tags: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author?: string | null
+          category?: string
+          created_at?: string
+          description?: string
+          href: string
+          id?: string
+          level?: string
+          platform?: string | null
+          tags?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string | null
+          category?: string
+          created_at?: string
+          description?: string
+          href?: string
+          id?: string
+          level?: string
+          platform?: string | null
+          tags?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -170,6 +293,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
