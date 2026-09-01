@@ -53,6 +53,7 @@ export const RESOURCE_LEVELS = ["Beginner", "Intermediate", "Advanced"] as const
 export const safeUrl = z
   .string()
   .trim()
+  .max(2000)
   .url("Enter a valid URL")
   .refine((value) => /^https?:\/\//i.test(value), "Only http(s) links are allowed");
 
@@ -65,7 +66,7 @@ export const contestSchema = z.object({
   tags: z.array(z.string().trim().min(1).max(40)).max(12),
   participants: z.number().int().min(0).max(10_000_000),
   banner_url: z.string().trim().max(2000).optional().or(z.literal("")),
-  external_url: safeUrl.max(2000).optional().or(z.literal("")),
+  external_url: safeUrl.optional().or(z.literal("")),
   starts_at: z.string().min(1, "Start time is required"),
   ends_at: z.string().optional().or(z.literal("")),
   status: z.enum(["upcoming", "live", "completed"]),
@@ -76,7 +77,7 @@ export const resourceSchema = z.object({
   description: z.string().trim().min(2, "Description is required").max(600),
   category: z.string().trim().min(1).max(60),
   level: z.enum(RESOURCE_LEVELS),
-  href: safeUrl.max(2000),
+  href: safeUrl,
   author: z.string().trim().max(80).optional().or(z.literal("")),
   platform: z.string().trim().max(80).optional().or(z.literal("")),
   tags: z.array(z.string().trim().min(1).max(40)).max(12),
