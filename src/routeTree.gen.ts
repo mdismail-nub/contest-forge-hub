@@ -14,6 +14,7 @@ import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as ContestsRouteImport } from './routes/contests'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminContestsRouteImport } from './routes/admin/contests'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const AdminContestsRoute = AdminContestsRouteImport.update({
+  id: '/contests',
+  path: '/contests',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteRouteWithChildren
   '/contests': typeof ContestsRoute
   '/resources': typeof ResourcesRoute
+  '/admin/contests': typeof AdminContestsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contests': typeof ContestsRoute
   '/resources': typeof ResourcesRoute
+  '/admin/contests': typeof AdminContestsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -68,21 +76,35 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteRouteWithChildren
   '/contests': typeof ContestsRoute
   '/resources': typeof ResourcesRoute
+  '/admin/contests': typeof AdminContestsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/admin' | '/contests' | '/resources' | '/admin/login' | '/admin/'
+    | '/'
+    | '/admin'
+    | '/contests'
+    | '/resources'
+    | '/admin/contests'
+    | '/admin/login'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contests' | '/resources' | '/admin/login' | '/admin'
+  to:
+    | '/'
+    | '/contests'
+    | '/resources'
+    | '/admin/contests'
+    | '/admin/login'
+    | '/admin'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/contests'
     | '/resources'
+    | '/admin/contests'
     | '/admin/login'
     | '/admin/'
   fileRoutesById: FileRoutesById
@@ -131,6 +153,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/admin/contests': {
+      id: '/admin/contests'
+      path: '/contests'
+      fullPath: '/admin/contests'
+      preLoaderRoute: typeof AdminContestsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/login'
@@ -142,11 +171,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteRouteChildren {
+  AdminContestsRoute: typeof AdminContestsRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminContestsRoute: AdminContestsRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
