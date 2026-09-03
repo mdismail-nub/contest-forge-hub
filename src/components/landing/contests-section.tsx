@@ -1,18 +1,17 @@
+import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, CalendarClock, Gift, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  avatarStack,
-  COMMUNITY_FACEBOOK_URL,
-  COMMUNITY_WHATSAPP_URL,
-  contests,
-  type Contest,
-} from "./data";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useContentRealtime } from "@/hooks/use-content-realtime";
+import { contestsQueryOptions } from "@/lib/content-queries";
+import { effectiveStatus, formatDhaka, type ContestRow } from "@/lib/content";
+import { avatarStack, COMMUNITY_FACEBOOK_URL, COMMUNITY_WHATSAPP_URL } from "./data";
 import { PenUnderline } from "./pen-underline";
-import { pad, useCountdown } from "./use-countdown";
+import { pad, useCountdownTo } from "./use-countdown";
 
-function CountdownStrip({ startsInMs }: { startsInMs: number }) {
-  const { days, hours, minutes, seconds, ready } = useCountdown(startsInMs);
+function CountdownStrip({ startsAt }: { startsAt: string }) {
+  const { days, hours, minutes, seconds, ready } = useCountdownTo(startsAt);
   const parts: Array<[string, string]> = ready
     ? [
         [pad(days), "d"],
@@ -42,10 +41,20 @@ function CountdownStrip({ startsInMs }: { startsInMs: number }) {
   );
 }
 
-function ContestCard({ contest }: { contest: Contest }) {
+function ContestCard({ contest }: { contest: ContestRow }) {
+  const status = effectiveStatus(contest);
+
   return (
     <article className="group glass-panel flex flex-col justify-between rounded-[24px] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[var(--shadow-ambient)] border border-border/80">
       <div>
+        {contest.banner_url && (
+          <img
+            src={contest.banner_url}
+            alt={`${contest.title} banner`}
+            loading="lazy"
+            className="mb-4 h-32 w-full rounded-2xl object-cover"
+          />
+        )}
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
           <div className="min-w-0">
             <p className="truncate text-xs font-bold uppercase tracking-[0.18em] text-primary">
@@ -61,6 +70,9 @@ function ContestCard({ contest }: { contest: Contest }) {
         </div>
 
         <div className="mt-4 flex flex-wrap gap-1.5">
+          <span className="rounded-full bg-primary/10 px-2.5 py-0.5 font-mono text-[0.7rem] font-semibold text-primary">
+            {status}
+          </span>
           {contest.tags.map((tag) => (
             <span
               key={tag}
@@ -75,12 +87,18 @@ function ContestCard({ contest }: { contest: Contest }) {
       <div className="mt-6 space-y-3.5 border-t border-border/70 pt-5">
         <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
           <CalendarClock className="h-4 w-4 shrink-0 text-primary" />
-          <CountdownStrip startsInMs={contest.startsInMs} />
+          {status === "upcoming" ? (
+            <CountdownStrip startsAt={contest.starts_at} />
+          ) : (
+            <span className="min-w-0 truncate">{formatDhaka(contest.starts_at)}</span>
+          )}
         </div>
-        <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
-          <Gift className="h-4 w-4 shrink-0 text-primary" />
-          <span className="min-w-0 truncate">{contest.prize}</span>
-        </div>
+        {contest.prize && (
+          <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
+            <Gift className="h-4 w-4 shrink-0 text-primary" />
+            <span className="min-w-0 truncate">{contest.prize}</span>
+          </div>
+        )}
 
         <div className="flex items-center justify-between gap-3 pt-2">
           <div className="flex items-center gap-2">
@@ -94,7 +112,8 @@ function ContestCard({ contest }: { contest: Contest }) {
                 </span>
               ))}
             </div>
-            <span className="text-xs font-medium text-muted-foreground">
+            <span className="flex items-center gap-1 text-xs font-medium text-muted-foreground">
+              <Users className="h-3.5 w-3.5" />
               {contest.participants.toLocaleString()} joined
             </span>
           </div>
@@ -104,7 +123,11 @@ function ContestCard({ contest }: { contest: Contest }) {
             className="rounded-full px-4 text-xs font-semibold"
             asChild
           >
-            <a href={COMMUNITY_FACEBOOK_URL} target="_blank" rel="noreferrer">
+            <a
+              href={contest.external_url || COMMUNITY_FACEBOOK_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
               Join Round
             </a>
           </Button>
@@ -115,6 +138,10 @@ function ContestCard({ contest }: { contest: Contest }) {
 }
 
 export function ContestsSection() {
+  useContentRealtime();
+  const { data, isLoading } = useQuery(contestsQueryOptions);
+  const contests = (data ?? []).filter((contest) => effectiveStatus(contest) !== "completed");
+
   return (
     <section id="contests" className="scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
       <div className="mx-auto max-w-6xl">
@@ -140,10 +167,16 @@ export function ContestsSection() {
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {contests.map((contest) => (
-            <ContestCard key={contest.id} contest={contest} />
-          ))}
+          {isLoading
+            ? [0, 1, 2].map((i) => <Skeleton key={i} className="h-72 rounded-[24px]" />)
+            : contests.map((contest) => <ContestCard key={contest.id} contest={contest} />)}
         </div>
+
+        {!isLoading && contests.length === 0 && (
+          <p className="mt-10 rounded-[24px] border border-dashed border-border/80 p-10 text-center text-sm text-muted-foreground">
+            No rounds scheduled right now — join the community to hear first.
+          </p>
+        )}
       </div>
     </section>
   );
