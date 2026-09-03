@@ -1,10 +1,23 @@
+import { useState } from "react";
+
 import { platforms } from "./data";
 
 function PlatformBadge({ name, detail, logo }: { name: string; detail: string; logo: string }) {
+  const [broken, setBroken] = useState(false);
   return (
     <div className="glass-panel flex shrink-0 items-center gap-3 rounded-2xl px-5 py-3">
-      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-card">
-        <img src={logo} alt={`${name} logo`} className="h-5 w-5" loading="lazy" />
+      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-card text-xs font-bold text-primary">
+        {broken ? (
+          name.slice(0, 2).toUpperCase()
+        ) : (
+          <img
+            src={logo}
+            alt={`${name} logo`}
+            className="h-5 w-5"
+            loading="lazy"
+            onError={() => setBroken(true)}
+          />
+        )}
       </span>
       <span className="min-w-0">
         <span className="block truncate text-sm font-semibold">{name}</span>
