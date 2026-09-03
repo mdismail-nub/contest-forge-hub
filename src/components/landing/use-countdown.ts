@@ -35,3 +35,28 @@ export function useCountdown(startsInMs: number): Countdown {
 }
 
 export const pad = (value: number) => value.toString().padStart(2, "0");
+
+/** Counts down to an absolute ISO timestamp (SSR-safe: idle until hydrated). */
+export function useCountdownTo(iso: string): Countdown {
+  const [remaining, setRemaining] = useState<number | null>(null);
+
+  useEffect(() => {
+    const target = new Date(iso).getTime();
+    if (Number.isNaN(target)) return;
+    const tick = () => setRemaining(Math.max(0, target - Date.now()));
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, [iso]);
+
+  if (remaining === null) return EMPTY;
+
+  const totalSeconds = Math.floor(remaining / 1000);
+  return {
+    days: Math.floor(totalSeconds / 86400),
+    hours: Math.floor((totalSeconds % 86400) / 3600),
+    minutes: Math.floor((totalSeconds % 3600) / 60),
+    seconds: totalSeconds % 60,
+    ready: true,
+  };
+}
